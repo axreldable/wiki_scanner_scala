@@ -13,4 +13,8 @@ dependencies {
     compile 'org.scala-lang:scala-library:2.12.6'
     testCompile 'org.scalatest:scalatest_2.11:3.0.0'
     testCompile 'junit:junit:4.12'
+    
+    compile group: 'org.scalaj', name: 'scalaj-http_2.12', version: '2.4.0'
+
+
 }
