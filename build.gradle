@@ -11,10 +11,9 @@ repositories {
 
 dependencies {
     compile 'org.scala-lang:scala-library:2.12.6'
-    testCompile 'org.scalatest:scalatest_2.11:3.0.0'
-    testCompile 'junit:junit:4.12'
-    
+    compile group: 'org.json4s', name: 'json4s-native_2.13.0-M4', version: '3.6.0-M4'
     compile group: 'org.scalaj', name: 'scalaj-http_2.12', version: '2.4.0'
 
-
+    testCompile group: 'org.scalatest', name: 'scalatest_2.12', version: '3.2.0-SNAP10'
+    testCompile 'junit:junit:4.12'
 }
