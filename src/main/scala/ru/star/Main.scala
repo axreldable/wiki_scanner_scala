@@ -13,6 +13,7 @@ object Main extends App {
   val startTime = System.currentTimeMillis()
 
   val config = initConfig()
+  println(config.resultCsvName)
 
   val client = new WikiClient(Http(WIKI_API_URL))
 
@@ -25,13 +26,6 @@ object Main extends App {
 
   def initConfig(): ConfigModel = {
     val configWorker = new ConfigWorker("app_config.json")
-    ConfigModel(
-      startCategories = Array("Политика", "Спорт"),
-      crawlingThreadsCount = 1,
-      queryDelay = 0,
-      crawlingResultsPath = "",
-      resultCsvName = "",
-      printCount = 1
-    )
+    configWorker.config
   }
 }
