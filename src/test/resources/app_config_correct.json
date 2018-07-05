@@ -1,0 +1,8 @@
+{
+  "start_categories": ["Искусство"],
+  "crawling_threads_count": 5,
+  "query_delay": 0,
+  "crawling_results_path": "path_to_dir",
+  "result_csv_name": "path_to_csv",
+  "print_count": 20
+}
