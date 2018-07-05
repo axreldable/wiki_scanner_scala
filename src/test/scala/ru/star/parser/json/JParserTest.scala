@@ -9,21 +9,26 @@ class JParserTest extends FlatSpec with Matchers {
   val parser = new TestParser
 
   it should "Parse json in case class with camel case fields" in {
-    val json: String = "{\n  \"start_categories\": [\"Искусство\", \"Автомобили\", \"Бизнес\", \"Путешествия\", \"Религия\", \"Политика\", \"Наука\", \"Домашние животные\", \"Спорт\", \"Технология\"],\n  \"crawling_threads_count\": 5,\n  \"query_delay\": 0,\n  \"crawling_results_path\": \"/home/axreldable/IdeaProjects/wiki_scanner_java/crawling\",\n  \"result_csv_name\": \"/home/axreldable/IdeaProjects/wiki_scanner_java/crawling/result.csv\",\n  \"print_count\": 20\n}"
+    val json: String = """{
+                         |  "start_categories": ["Искусство"],
+                         |  "crawling_threads_count": 5,
+                         |  "query_delay": 0,
+                         |  "crawling_results_path": "path_to_dir",
+                         |  "result_csv_name": "path_to_csv",
+                         |  "print_count": 20
+                         |}""".stripMargin
 
     val jsonConfig = parser.parseCamelCase[ConfigModel](json)
 
     val expected = ConfigModel(
-      startCategories = Array("Искусство", "Автомобили", "Бизнес", "Путешествия", "Религия", "Политика", "Наука", "Домашние животные", "Спорт", "Технология"),
+      startCategories = Array("Искусство"),
       crawlingThreadsCount = 5,
       queryDelay = 0,
-      crawlingResultsPath = "/home/axreldable/IdeaProjects/wiki_scanner_java/crawling",
-      resultCsvName = "/home/axreldable/IdeaProjects/wiki_scanner_java/crawling/result.csv",
+      crawlingResultsPath = "path_to_dir",
+      resultCsvName = "path_to_csv",
       printCount = 20
     )
 
-    // why it doesn't work?
-//    jsonConfig shouldBe expected
     jsonConfig.startCategories shouldBe expected.startCategories
     jsonConfig.crawlingThreadsCount shouldBe expected.crawlingThreadsCount
     jsonConfig.queryDelay shouldBe expected.queryDelay
